@@ -13,6 +13,8 @@ Add 'start anticheat' to your server.cfg file.
 
 Modify the 'BlacklistedTrigger' and 'LimitedTrigger' variables in the script to include the triggers you want to detect.
 
+"TriggerSec" is the number of seconds being monitored and "TriggerCount" is the limit for how often a trigger can be used within that time frame.
+
 ![image](https://user-images.githubusercontent.com/107435103/236684685-61b8370e-8d06-45b9-a4b2-f63c0545f8b7.png)
 
 Restart your FiveM server and the script will be active.
@@ -20,6 +22,9 @@ Restart your FiveM server and the script will be active.
 
 Usage:
 Once the script is installed and running, it will automatically detect any blacklisted or limited triggers that are executed by players in your server. If a trigger is detected, a message will be printed to the console with the name of the trigger and the type of detection (blacklisted or limited).
+
+LimitedTrigger monitors how often a trigger is used within a certain time frame. If a trigger is used more than the specified number of times (specified by the "maxUse" parameter) within a certain time frame (specified by the "sec" parameter), the player will be banned.
+
 
 Configuration:
 To configure the script, modify the 'BlacklistedTrigger' and 'LimitedTrigger' variables in the script. These variables are arrays that contain the names of the triggers you want to detect. You can add or remove triggers as needed.
