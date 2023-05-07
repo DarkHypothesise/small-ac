@@ -8,7 +8,9 @@ This script is designed to prevent cheating in your FiveM server by detecting bl
 Installation:
 
 Download the script and save it to your server's resources folder.
+
 Add 'start anticheat' to your server.cfg file.
+
 Modify the 'BlacklistedTrigger' and 'LimitedTrigger' variables in the script to include the triggers you want to detect.
 
 ![image](https://user-images.githubusercontent.com/107435103/236684685-61b8370e-8d06-45b9-a4b2-f63c0545f8b7.png)
