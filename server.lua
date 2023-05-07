@@ -11,6 +11,7 @@ local BlacklistedTriggers = {
 local LimitTrigger = {
     -- "toggleDuty",
      "dark-admin:revive",
+    -- Weitere Limit Triggers hier hinzufügen
    
 }
    
@@ -39,21 +40,29 @@ end
 
 -- ServerSide Blacklisted Trigger Count Check
 local triggerCounts = {}
+
 for _, trigger in ipairs(LimitTrigger) do
     RegisterNetEvent(trigger)
     AddEventHandler(trigger, function()
-        if not triggerCounts[trigger] then
-            triggerCounts[trigger] = 1
-        else
-            triggerCounts[trigger] = triggerCounts[trigger] + 1
+        local source = source
+        
+        if not triggerCounts[source] then
+            triggerCounts[source] = {}
         end
         
-        if triggerCounts[trigger] >= TriggerCount then
-            print("[ANTICHEAT] Übermäßige Verwendung Limited trigger: " .. trigger)
+        if not triggerCounts[source][trigger] then
+            triggerCounts[source][trigger] = 1
         else
-            print("[ANTICHEAT] Limited trigger detected: " .. trigger)
-            Citizen.Wait(TriggerSec) -- wait 10 seconds
-            triggerCounts[trigger] = triggerCounts[trigger] - 1
+            triggerCounts[source][trigger] = triggerCounts[source][trigger] + 1
+        end
+        
+        if triggerCounts[source][trigger] >= TriggerCount then
+            print("[ANTICHEAT] Übermäßige Verwendung Limited trigger durch Client "..source..": " .. trigger)
+        else
+            print("[ANTICHEAT] Limited trigger detected for Client "..source..": " .. trigger)
+            Citizen.Wait(TriggerSec) -- wait for specified seconds
+            triggerCounts[source][trigger] = triggerCounts[source][trigger] - 1
         end
     end)
 end
+
