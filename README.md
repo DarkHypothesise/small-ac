@@ -15,7 +15,7 @@ The script works by tracking the execution of Blacklisted TriggerEvents and chec
 
 The script is easy to install and use. Simply add the file to your resources directory and start it in your server configuration file.
 
-Here's the download link to my Github repository: [Download](https://github.com/DarkHypothesise/small-ac)
+𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 [Latest Release](https://github.com/DarkHypothesise/small-ac)
 
 I hope this script will help other server administrators increase server security and improve the player experience on their FiveM servers.
 
