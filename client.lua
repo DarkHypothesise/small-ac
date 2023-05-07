@@ -1,9 +1,16 @@
 local BlacklistedTrigger = {}
 local LimitedTrigger = {}
 
-AddEventHandler('playerSpawned', function(resourceName)
-  TriggerServerEvent("PlayerLoaded")
+local hasPlayerLoaded = false
+
+AddEventHandler('playerSpawned', function(spawnInfo)
+    if not hasPlayerLoaded then
+        Citizen.Wait(3500)
+        TriggerServerEvent('PlayerLoadedCf')
+        hasPlayerLoaded = true
+    end
 end)
+
 
 RegisterNetEvent("InfoConfigBckTrigger")
 AddEventHandler("InfoConfigBckTrigger", function(value)
