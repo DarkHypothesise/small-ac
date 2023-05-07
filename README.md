@@ -2,33 +2,27 @@
 
 README for FiveM script:
 
-Introduction:
+[Free] Standalone Anti-Blacklist TriggerEvent & Trigger Count Limit
 
-This script is designed to prevent cheating in your FiveM server by detecting blacklisted and limited triggers. It works by adding event handlers for the specified triggers and printing a message to the console when one is detected.
+Hello everyone,
 
+Today, I'm sharing my free standalone script for FiveM, which serves as an anti-cheat measure against Blacklisted TriggerEvent abuse and excessive trigger usage on the server.
 
-Installation:
+The script works by tracking the execution of Blacklisted TriggerEvents and checking how often certain triggers are triggered within a set time period. If a Blacklisted TriggerEvent is detected or a trigger exceeds the set limit, the affected player will be automatically banned.
 
-Download the script and save it to your server's resources folder.
+**Features**
+* Automatic print when a blacklisted trigger is detected.
+* Automatic print if a player exceeds a set trigger limit within a certain time frame
+* Easy configuration by editing the trigger arrays in the script (ServerSide)
+* You can use both client and serverside triggers
+* No dependencies on other resources
 
-Add 'start anticheat' to your server.cfg file.
+The script is easy to install and use. Simply add the file to your resources directory and start it in your server configuration file.
 
-Modify the 'BlacklistedTrigger' and 'LimitedTrigger' variables in the script to include the triggers you want to detect.
+Here's the download link to my Github repository: [Latest Release](https://github.com/DarkHypothesise/small-ac)
 
-"TriggerSec" is the number of seconds being monitored and "TriggerCount" is the limit for how often a trigger can be used within that time frame.
+I hope this script will help other server administrators increase server security and improve the player experience on their FiveM servers.
 
-![image](https://user-images.githubusercontent.com/107435103/236684685-61b8370e-8d06-45b9-a4b2-f63c0545f8b7.png)
+Feedback and suggestions are always welcome!
 
-Restart your FiveM server and the script will be active.
-
-
-Usage:
-
-Once the script is installed and running, it will automatically detect any blacklisted or limited triggers that are executed by players in your server. If a trigger is detected, a message will be printed to the console with the name of the trigger and the type of detection (blacklisted or limited).
-
-LimitedTrigger monitors how often a trigger is used within a certain time frame. If a trigger is used more than the specified number of times (specified by the "maxUse" parameter) within a certain time frame (specified by the "sec" parameter), the player will be banned.
-
-
-Important Note:
-
-This script is designed as a tool to help prevent cheating in your FiveM server, but it is not foolproof. It is recommended to use other anti-cheat measures in conjunction with this script to ensure a fair and fun gameplay experience for all players.
+Enjoy the script!
