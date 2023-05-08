@@ -1,15 +1,15 @@
 AddEventHandler('onResourceStart', function(resourceName)
     Citizen.Wait(5000)
     print("[ANTICHEAT] Config geladen Clientside")
-    TriggerClientEvent("InfoConfigBckTrigger", -1, Config.BlacklistedTriggers) 
-    TriggerClientEvent("InfoLimitTrigger", -1, Config.LimitTrigger, Config.TriggerCount, Config.TriggerSec) 
+    TriggerClientEvent("InfoConfigBckTrigger", -1, Config.BlacklistedTriggers, Config.UseWebhooks) 
+    TriggerClientEvent("InfoLimitTrigger", -1, Config.LimitTrigger, Config.TriggerCount, Config.TriggerSec, Config.UseWebhooks) 
 end)
 
 RegisterNetEvent("PlayerLoaded")
 AddEventHandler("PlayerLoaded", function()
     print("[ANTICHEAT] Config geladen Clientside")
-    TriggerClientEvent("InfoConfigBckTrigger", -1, Config.BlacklistedTriggers) 
-    TriggerClientEvent("InfoLimitTrigger", -1, Config.LimitTrigger, Config.TriggerCount, Config.TriggerSec) 
+    TriggerClientEvent("InfoConfigBckTrigger", -1, Config.BlacklistedTriggers, Config.UseWebhooks) 
+    TriggerClientEvent("InfoLimitTrigger", -1, Config.LimitTrigger, Config.TriggerCount, Config.TriggerSec, Config.UseWebhooks) 
 end)
 
 
@@ -23,7 +23,9 @@ for _, trigger in ipairs(Config.BlacklistedTriggers) do
         local ip = identifiers.ip or "Unknown ip"
         
         print("[ANTICHEAT] Blacklisted Trigger detected: " .. trigger .. " by player " .. playerName)
+        if Config.UseWebhooks then
         sendWebhook("Blacklisted Trigger use\n"..triggerName.." \n\n[PLAYER INFO]\n", "**"..playerName.. " | ID: "..source.."**\n**DISCORD :<@"..discordId..">**\n**IP :"..ip.."**", 14356753)
+    end
     end)
 end
 
@@ -52,7 +54,9 @@ for _, trigger in ipairs(Config.LimitTrigger) do
         
         if triggerCounts[source][trigger] >= Config.TriggerCount then
             print("[ANTICHEAT] Excessive use of Limited trigger by client "..playerName.. "["..source.."]: " .. trigger)
+            if Config.UseWebhooks then
             sendWebhook("Excessive Trigger use\n"..trigger.." \n\n[PLAYER INFO]\n", "**"..playerName.. " | ID: "..source.."**\n**DISCORD :<@"..discordId..">**\n**IP :"..ip.."**", 14356753)
+        end
         else
             print("[ANTICHEAT] Limited trigger detected for Client "..playerName.. "["..source.."]: " .. trigger)
             Citizen.Wait(Config.TriggerSec) -- wait for specified seconds
