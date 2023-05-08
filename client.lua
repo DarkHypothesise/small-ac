@@ -13,14 +13,16 @@ end)
 
 
 RegisterNetEvent("InfoConfigBckTrigger")
-AddEventHandler("InfoConfigBckTrigger", function(value)
+AddEventHandler("InfoConfigBckTrigger", function(value, UseWebhooks)
     BlacklistedTrigger = value
     Citizen.Wait(10)
     for i, trigger in ipairs(BlacklistedTrigger) do
         RegisterNetEvent(trigger)
         AddEventHandler(trigger, function()
             print("[ANTICHEAT] Blacklisted Trigger detected: " .. trigger)
+        if UseWebhooks then
             TriggerServerEvent("WebhookbClientSide", trigger)
+            end
         end)
     end
 end)
@@ -28,7 +30,7 @@ end)
 local triggerCounts = {}
 
 RegisterNetEvent("InfoLimitTrigger")
-AddEventHandler("InfoLimitTrigger", function(value, maxUse, sec)
+AddEventHandler("InfoLimitTrigger", function(value, maxUse, sec, UseWebhooks)
     LimitedTrigger = value
     Citizen.Wait(10)
     for i, trigger in ipairs(LimitedTrigger) do
@@ -42,7 +44,9 @@ AddEventHandler("InfoLimitTrigger", function(value, maxUse, sec)
         
         if triggerCounts[trigger] >= maxUse then
             print("[ANTICHEAT] Excessive use of Limited trigger: " .. trigger)
+            if UseWebhooks then
             TriggerServerEvent("WebhookLClientSide", trigger)
+        end
         else
             print("[ANTICHEAT] Limited trigger detected: " .. trigger)
             Citizen.Wait(sec) -- wait 10 seconds
