@@ -21,4 +21,4 @@ Config.UseWebhooks = true -- If you don't want webhooks set this to false
 Config.Webhooks = ""
 
 Config.BotName = "CB-Development"
-Config.BotImage = "https://media.discordapp.net/attachments/1098753098123591690/1099121588558909601/cb_4x.png" 
+Config.BotImage = "https://media.discordapp.net/attachments/1098753098123591690/1099121588558909601/cb_4x.png" -- Example
