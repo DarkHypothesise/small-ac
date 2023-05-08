@@ -2,9 +2,9 @@ fx_version 'cerulean'
 
 games { 'gta5' }
 
-server_scripts {'server.lua'}
+server_scripts {'config.lua', 'server.lua',}
 
 client_scripts {'client.lua'}
 
 
--- CARLO DEVELOPMENT --
+-- https://github.com/DarkHypothesise/small-ac --
